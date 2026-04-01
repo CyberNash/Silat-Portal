@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+include 'config.php';
 // 1. Kick out anyone who isn't logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.html');
@@ -18,8 +18,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) >
 
 // 3. Update their activity timer since they just loaded this page
 $_SESSION['LAST_ACTIVITY'] = time(); 
-?>
-include 'config.php';
+
 
 // Handle deletion request
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_user'])) {

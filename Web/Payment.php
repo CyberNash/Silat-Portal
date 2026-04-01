@@ -18,7 +18,7 @@ if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) >
 
 // 3. Update their activity timer since they just loaded this page
 $_SESSION['LAST_ACTIVITY'] = time(); 
-?>
+
 // Fetch user ID (Matrix) from session
 $user_id = $_SESSION['user_id'];
 
