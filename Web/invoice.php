@@ -7,7 +7,13 @@ if (!isset($_SESSION['user_id'])) {
     header('Location: login.html');
     exit();
 }
-
+$timeout_duration = 1800; 
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
+    session_unset();
+    session_destroy();
+    echo "<script>alert('Session expired due to inactivity. Please log in again.'); window.location.href='login.html';</script>";
+    exit();
+}
 // Fetch user ID (Matrix) from session
 $user_id = $_SESSION['user_id'];
 

@@ -1,5 +1,24 @@
 <?php
-// Include your database connection file
+session_start();
+
+// 1. Kick out anyone who isn't logged in
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.html');
+    exit();
+}
+
+// 2. Kick out anyone who has been idle for 30 minutes
+$timeout_duration = 1800; 
+if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
+    session_unset();
+    session_destroy();
+    echo "<script>alert('Session expired due to inactivity. Please log in again.'); window.location.href='login.html';</script>";
+    exit();
+}
+
+// 3. Update their activity timer since they just loaded this page
+$_SESSION['LAST_ACTIVITY'] = time(); 
+?>
 include 'config.php';
 
 // Handle deletion request
