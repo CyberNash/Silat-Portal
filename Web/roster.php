@@ -114,6 +114,7 @@ $result_roster = $conn->query($sql_roster);
           <li class="nav-item">
             <a href="#" class="nav-link">Details</a>
           </li>
+           <?php include 'dark-mode.php'; ?>
           <li class="nav-item dropdown">
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
