@@ -195,7 +195,7 @@ if (isset($conn)) {
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="StudentDashboard.php" class="brand-link">
-      <img src="../logoSilatCekak.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="pics/logoSilatCekak.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">PSSCM UniMAP</span>
     </a>
 
@@ -343,12 +343,12 @@ if (isset($conn)) {
                 <div class="d-flex justify-content-between align-items-center">
                 <!-- QR Code Image -->
                 <div class="qr-code" style="text-align: center;">
-                    <img src="../QR_RR.png" alt="QR Code" class="img-fluid" style="max-width: 250px; height: auto;">
+                    <img src="pics/QR_RR.png" alt="QR Code" class="img-fluid" style="max-width: 250px; height: auto;">
                 </div>
 
                 <!-- JOMPAY ID Image -->
                 <div class="jompay-id" style="text-align: center;">
-                    <img src="../FakeJomPay.drawio.png" alt="JOMPAY ID" class="img-fluid" style="max-width: 250px; height: auto;">
+                    <img src="pics/FakeJomPay.drawio.png" alt="JOMPAY ID" class="img-fluid" style="max-width: 250px; height: auto;">
                 </div>
             </div>
                 
