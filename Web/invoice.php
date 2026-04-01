@@ -116,7 +116,7 @@ $conn->close();
                 <div class="invoice-header text-center">
                     <div class="row">
                         <div class="col-md-6 text-start">
-                            <img src="../logoSilatCekak.png" alt="Silat Club Logo"> <!-- Add your logo path -->
+                            <img src="pics/logoSilatCekak.png" alt="Silat Club Logo"> <!-- Add your logo path -->
                         </div>
                         <div class="col-md-6 text-end">
                             <p class="mb-0">Persatuan Silat Cekak Malaysia UniMAP</p>
