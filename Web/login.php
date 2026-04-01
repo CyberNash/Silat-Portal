@@ -1,44 +1,47 @@
 <?php
 session_start();
-include 'config.php';  // Ensure you have a connection to your database
+include 'config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Get form data
-    $email = $_POST['email'];
+    // Sanitize the email format before it even hits the database
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $password = $_POST['password'];
 
-    // Prepare SQL query to fetch the user
+    // Prepared SQL query prevents SQL Injection
     $sql = "SELECT * FROM Users WHERE Email = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Check if user exists and password matches
     if ($result->num_rows > 0) {
         $user = $result->fetch_assoc();
 
-        // Compare plain text password with stored password (since it's not hashed)
+        // Compare plain text password (Update to password_verify() in version 2.0!)
         if ($password === $user['Password']) {
-            // Password is correct, create session for the user
+            
+            // SECURITY ADDITION: Prevent session fixation attacks
+            session_regenerate_id(true); 
+            
             $_SESSION['user_id'] = $user['Matrix'];
             $_SESSION['user_name'] = $user['Name'];
             $_SESSION['user_role'] = $user['Role'];
 
-            // Check user role and redirect accordingly
             if ($_SESSION['user_role'] === 'admin') {
-                // Redirect to admin dashboard
                 header('Location: admin.php');
             } else {
-                // Redirect to student dashboard
                 header('Location: StudentDashboard.php');
             }
             exit();
         } else {
-            echo "Invalid password!";
+            // UI ADDITION: Clean pop-up error instead of a blank white page
+            echo "<script>alert('Invalid password!'); window.history.back();</script>";
         }
     } else {
-        echo "No user found with that email address.";
+        // UI ADDITION: Clean pop-up error
+        echo "<script>alert('No user found with that email address.'); window.history.back();</script>";
     }
+    $stmt->close();
 }
+$conn->close();
 ?>
