@@ -210,7 +210,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </div>
       </form>
 
-      <a href="Login.html" class="text-center">I already have a membership</a>
+      <a href="../index.html" class="text-center">I already have a membership</a>
     </div>
     <!-- /.form-box -->
   </div><!-- /.card -->

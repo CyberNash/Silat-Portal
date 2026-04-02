@@ -5,7 +5,7 @@ include 'config.php';
 
 // 1. Kick out anyone who isn't logged in
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.html');
+    header('Location: ../index.html');
     exit();
 }
 
@@ -14,7 +14,7 @@ $timeout_duration = 1800;
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
     session_unset();
     session_destroy();
-    echo "<script>alert('Session expired due to inactivity. Please log in again.'); window.location.href='login.html';</script>";
+    echo "<script>alert('Session expired due to inactivity. Please log in again.'); window.location.href='../index.html';</script>";
     exit();
 }
 
@@ -175,7 +175,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Dropdown</a>
             <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
               <li><a href="#" class="dropdown-item">Setting</a></li>
-              <li><a href="Login.html" class="dropdown-item">Logout</a></li>
+              <li><a href="../index.html" class="dropdown-item">Logout</a></li>
             </ul>
           </li>
         </ul>

@@ -3,7 +3,7 @@ session_start();
 include('config.php');
 // 1. Kick out anyone who isn't logged in
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.html');
+    header('Location: ../index.html');
     exit();
 }
 
@@ -12,7 +12,7 @@ $timeout_duration = 1800;
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
     session_unset();
     session_destroy();
-    echo "<script>alert('Session expired due to inactivity. Please log in again.'); window.location.href='login.html';</script>";
+    echo "<script>alert('Session expired due to inactivity. Please log in again.'); window.location.href='../index.html';</script>";
     exit();
 }
 
@@ -244,7 +244,7 @@ if (isset($conn)) {
             </a>
           </li>
           <li class="nav-item">
-            <a href="Login.html" class="nav-link">
+            <a href="../index.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Log Out

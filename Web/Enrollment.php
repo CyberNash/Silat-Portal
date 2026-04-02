@@ -3,7 +3,7 @@ session_start();
 
 // 1. Kick out anyone who isn't logged in
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.html');
+    header('Location: ../index.html');
     exit();
 }
 
@@ -12,7 +12,7 @@ $timeout_duration = 1800;
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
     session_unset();
     session_destroy();
-    echo "<script>alert('Session expired due to inactivity. Please log in again.'); window.location.href='login.html';</script>";
+    echo "<script>alert('Session expired due to inactivity. Please log in again.'); window.location.href='../index.html';</script>";
     exit();
 }
 
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         // Execute the query
         if ($stmt->execute()) {
-            echo "<script>alert('Enrollment successful!'); window.location.href = 'Login.html';</script>";
+            echo "<script>alert('Enrollment successful!'); window.location.href = '../index.html';</script>";
         } else {
             echo "Error: " . $stmt->error;
         }

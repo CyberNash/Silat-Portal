@@ -3,14 +3,14 @@ session_start();
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     // Redirect to login if not logged in
-    header('Location: login.html');
+    header('Location: ../index.html');
     exit();
 }
 $timeout_duration = 1800; // 30 minutes in seconds
 if (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
     session_unset();
     session_destroy();
-    echo "<script>alert('Session expired due to inactivity. Please log in again.'); window.location.href='login.html';</script>";
+    echo "<script>alert('Session expired due to inactivity. Please log in again.'); window.location.href='../index.html';</script>";
     exit();
 }
 $_SESSION['LAST_ACTIVITY'] = time(); // Update activity timestamp
@@ -213,7 +213,7 @@ $conn->close();
             </a>
           </li>
           <li class="nav-item">
-            <a href="Login.html" class="nav-link">
+            <a href="../index.html" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Log Out
