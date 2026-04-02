@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'config.php';
+include 'Web/config.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Sanitize the email format before it even hits the database
